@@ -4,9 +4,6 @@
 	"description": "A React component for Instagram like stories",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
-	"files": [
-		"dist/index.js"
-	],
 	"scripts": {
 		"build": "webpack --mode production",
 		"build:dev": "webpack --mode development",
@@ -17,7 +14,7 @@
 		"predeploy": "cd example && npm install && npm run build",
 		"deploy": "gh-pages -d example/dist",
 		"buildall": "npm install && webpack --mode production && cd example && npm install && npm run build",
-		"prepare": "npm install && webpack --mode production && cd example && npm install && npm run build"
+		"prepare": "webpack --mode production"
 	},
 	"repository": {
 		"type": "git",
