@@ -1,5 +1,5 @@
 {
-	"name": "react-insta-stories",
+	"name": "@daverupp/react-insta-stories",
 	"version": "2.2.5",
 	"description": "A React component for Instagram like stories",
 	"main": "dist/index.js",
@@ -18,7 +18,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/mohitk05/react-insta-stories.git"
+		"url": "git+https://github.com/daverupp/react-insta-stories.git"
 	},
 	"keywords": [
 		"stories",
