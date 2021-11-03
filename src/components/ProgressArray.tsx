@@ -1,15 +1,22 @@
-import React, { useContext, useState, useEffect, useRef } from 'react'
+import React, {useContext, useState, useEffect, useRef} from 'react'
 import Progress from './Progress'
-import { ProgressContext, GlobalCtx, StoriesContext as StoriesContextInterface } from './../interfaces'
+import {ProgressContext, GlobalCtx, StoriesContext as StoriesContextInterface} from './../interfaces'
 import ProgressCtx from './../context/Progress'
 import GlobalContext from './../context/Global'
 import StoriesContext from './../context/Stories'
+import GlobalHeader from "./GlobalHeader";
 
 export default () => {
     const [count, setCount] = useState<number>(0)
-    const { currentId, next, videoDuration, pause } = useContext<ProgressContext>(ProgressCtx)
-    const { defaultInterval, onStoryEnd, onStoryStart, onAllStoriesEnd } = useContext<GlobalCtx>(GlobalContext);
-    const { stories } = useContext<StoriesContextInterface>(StoriesContext);
+    const {currentId, next, videoDuration, pause} = useContext<ProgressContext>(ProgressCtx)
+    const {
+        defaultInterval,
+        onStoryEnd,
+        onStoryStart,
+        onAllStoriesEnd,
+        globalHeader
+    } = useContext<GlobalCtx>(GlobalContext);
+    const {stories} = useContext<StoriesContextInterface>(StoriesContext);
 
     useEffect(() => {
         setCount(0)
@@ -65,25 +72,64 @@ export default () => {
     }
 
     return (
-        <div style={styles.progressArr}>
-            {stories.map((_, i) =>
-                <Progress
-                    key={i}
-                    count={count}
-                    width={1 / stories.length}
-                    active={i === currentId ? 1 : (i < currentId ? 2 : 0)}
-                />)}
+        <div style={globalHeader ? styles.containerWithHeader : styles.container}>
+            {globalHeader && (<div style={styles.opacity}></div>)}
+            {globalHeader && (<GlobalHeader heading={globalHeader.heading} actions={[]} infoVisible={false}
+                                            subheading={globalHeader.subheading}></GlobalHeader>)
+            }
+            <div style={globalHeader ? styles.progressArrWithHeader : styles.progressArr}>
+                {stories.map((_, i) =>
+                    <Progress
+                        key={i}
+                        count={count}
+                        width={1 / stories.length}
+                        active={i === currentId ? 1 : (i < currentId ? 2 : 0)}
+                    />)}
+            </div>
         </div>
     )
 }
 
 const styles = {
+    opacity: {
+        backgroundImage: 'linear-gradient(to bottom, #000, rgba(0, 0, 0, 0))',
+        height: 159,
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+    },
+    container: {
+        position: 'absolute',
+        zIndex: 99,
+        left: 0,
+        right: 0,
+    },
+
+    containerWithHeader: {
+        paddingLeft: 24,
+        paddingRight: 24,
+        position: 'absolute',
+        zIndex: 99,
+        left: 0,
+        right: 0,
+        height: 80,
+    },
+    progressArrWithHeader: {
+        display: 'flex',
+        justifyContent: 'center',
+        maxWidth: '100%',
+        flexWrap: 'row',
+        width: '100%',
+        alignSelf: 'center',
+        zIndex: 99,
+        paddingTop: 4
+    },
     progressArr: {
         display: 'flex',
         justifyContent: 'center',
         maxWidth: '100%',
         flexWrap: 'row',
-        position: 'absolute',
         width: '98%',
         padding: 5,
         paddingTop: 7,

@@ -6,6 +6,7 @@ export interface ReactInstaStoriesProps {
     height?: NumberOrString;
     loader?: JSX.Element;
     header?: Function;
+    globalHeader?: GlobalHeaderProps;
     storyContainerStyles?: Record<string, any>;
     storyStyles?: Object;
     loop?: boolean;
@@ -26,6 +27,7 @@ export interface GlobalCtx {
     width?: NumberOrString;
     height?: NumberOrString;
     loader?: JSX.Element;
+    globalHeader?: GlobalHeaderProps;
     header?: Function;
     storyContainerStyles?: Record<string, any>;
     storyStyles?: Object;
@@ -57,6 +59,7 @@ export interface ContainerState {
 }
 
 export type Action = (action: string, bufferAction?: boolean) => void;
+
 export interface Renderer extends React.FC<{
     action: Action;
     isPaused: boolean;
@@ -69,7 +72,8 @@ export interface Renderer extends React.FC<{
         storyStyles?: Object;
     };
     messageHandler: (type: string, data: any) => ({ ack: 'OK' | 'ERROR' })
-}> { }
+}> {
+}
 
 export type Tester = (story: Story) => {
     condition: boolean;
@@ -99,6 +103,17 @@ export interface Story {
     styles?: object;
     content?: Renderer;
     originalContent?: Renderer
+}
+
+export interface GlobalHeaderAction {
+    name: string
+}
+
+export interface GlobalHeaderProps {
+    heading: string;
+    subheading: string;
+    infoVisible: boolean;
+    actions: any
 }
 
 export interface Header {
