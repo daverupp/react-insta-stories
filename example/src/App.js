@@ -64,7 +64,7 @@ function App() {
 					keyboardNavigation
 					defaultInterval={8000}
 					stories={stories2}
-					globalHeader={{subheading: 'Photos from 21 Apr 2020', heading: 'One year ago'}}
+					globalHeader={{subheading: 'Photos from 21 Apr 2020', heading: 'One year ago', actions: <div>{'very cool'}</div>}}
 					onStoryEnd={(s, st) => console.log('story ended', s, st)}
 					onAllStoriesEnd={(s, st) => console.log('all stories ended', s, st)}
 					onStoryStart={(s, st) => console.log('story started', s, st)}

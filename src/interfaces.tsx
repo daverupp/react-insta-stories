@@ -112,8 +112,7 @@ export interface GlobalHeaderAction {
 export interface GlobalHeaderProps {
     heading: string;
     subheading: string;
-    infoVisible: boolean;
-    actions: any
+    actions: JSX.Element;
 }
 
 export interface Header {

@@ -74,7 +74,7 @@ export default () => {
     return (
         <div style={globalHeader ? styles.containerWithHeader : styles.container}>
             {globalHeader && (<div style={styles.opacity}></div>)}
-            {globalHeader && (<GlobalHeader heading={globalHeader.heading} actions={[]} infoVisible={false}
+            {globalHeader && (<GlobalHeader heading={globalHeader.heading} actions={globalHeader.actions}
                                             subheading={globalHeader.subheading}></GlobalHeader>)
             }
             <div style={globalHeader ? styles.progressArrWithHeader : styles.progressArr}>
@@ -98,6 +98,7 @@ const styles = {
         top: 0,
         left: 0,
         right: 0,
+        opacity: 0.6,
     },
     container: {
         position: 'absolute',
