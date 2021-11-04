@@ -111,7 +111,7 @@ const styles = {
         paddingLeft: 24,
         paddingRight: 24,
         position: 'absolute',
-        zIndex: 99,
+        zIndex: 1000,
         left: 0,
         right: 0,
         height: 80,
