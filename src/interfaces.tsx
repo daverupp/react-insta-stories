@@ -105,14 +105,11 @@ export interface Story {
     originalContent?: Renderer
 }
 
-export interface GlobalHeaderAction {
-    name: string
-}
-
 export interface GlobalHeaderProps {
     heading: string;
     subheading: string;
-    actions: JSX.Element;
+    rightActions: JSX.Element;
+    leftActions: JSX.Element;
 }
 
 export interface Header {

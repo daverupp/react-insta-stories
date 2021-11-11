@@ -2,7 +2,7 @@ import React from 'react'
 import {GlobalHeaderProps} from "../interfaces";
 import * as url from "url";
 
-const GlobalHeader = ({heading, subheading, actions}: GlobalHeaderProps) => {
+const GlobalHeader = ({heading, subheading, rightActions, leftActions}: GlobalHeaderProps) => {
     const styles = {
         main: {
             display: 'flex',
@@ -38,12 +38,15 @@ const GlobalHeader = ({heading, subheading, actions}: GlobalHeaderProps) => {
     }
 
     return <div style={styles.main}>
+        {leftActions && (
+            <div style={styles.actions}>{leftActions}</div>
+        )}
         <span style={styles.text}>
             <p style={styles.heading}>{heading}</p>
             <p style={styles.subheading}>{subheading}</p>
         </span>
-        {actions && (
-            <div style={styles.actions}>{actions}</div>
+        {rightActions && (
+            <div style={styles.actions}>{rightActions}</div>
         )}
     </div>
 
