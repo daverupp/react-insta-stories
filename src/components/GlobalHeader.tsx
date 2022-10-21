@@ -16,7 +16,8 @@ const GlobalHeader = ({heading, subheading, rightActions, leftActions}: GlobalHe
         text: {
             display: 'flex',
             flexDirection: 'column',
-            flexGrow: 1
+            flexGrow: 1,
+            textAlign: 'left'
         },
         heading: {
             fontSize: '16px',
