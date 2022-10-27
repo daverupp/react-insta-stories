@@ -92,13 +92,16 @@ export default () => {
 
 const styles = {
     opacity: {
-        backgroundImage: 'linear-gradient(to bottom, #000, rgba(0, 0, 0, 0))',
-        height: 159,
+        backgroundColor: '#333',
+        height: 109,
         position: "absolute",
+        borderTopWidth: 1,
+        borderTopRightRadius: 16,
+        borderTopLeftRadius: 16,
         top: 0,
         left: 0,
         right: 0,
-        opacity: 0.6,
+        opacity: 0.9,
     },
     container: {
         position: 'absolute',

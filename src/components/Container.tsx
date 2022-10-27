@@ -147,7 +147,10 @@ const styles = {
     container: {
         display: 'flex',
         flexDirection: 'column',
-        position: 'relative'
+        position: 'relative',
+        borderRadius: 16,
+        background: 'rgba(255, 255, 255, 0.4)',
+        boxShadow: '0px 0px 16px rgba(0, 0, 0, 0.25)'
     },
     overlay: {
         position: 'absolute',
