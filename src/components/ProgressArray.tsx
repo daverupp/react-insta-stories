@@ -111,13 +111,15 @@ const styles = {
     },
 
     containerWithHeader: {
-        paddingLeft: 24,
-        paddingRight: 24,
+        paddingLeft: 16,
+        paddingRight: 16,
         position: 'absolute',
         zIndex: 1000,
         left: 0,
         right: 0,
         height: 80,
+        borderTopRightRadius: 16,
+        borderTopLeftRadius: 16
     },
     progressArrWithHeader: {
         display: 'flex',
