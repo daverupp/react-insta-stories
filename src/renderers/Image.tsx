@@ -30,6 +30,7 @@ export const renderer: Renderer = ({ story, action, isPaused, config }) => {
                             left: 0,
                             top: 0,
                             background: "rgba(0, 0, 0, 0.9)",
+                            borderRadius: 16,
                             zIndex: 9,
                             display: "flex",
                             justifyContent: "center",
