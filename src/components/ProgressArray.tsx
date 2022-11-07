@@ -93,7 +93,7 @@ export default () => {
 const styles = {
     opacity: {
         backgroundColor: '#333',
-        height: 109,
+        height: 96,
         position: "absolute",
         borderTopWidth: 1,
         borderTopRightRadius: 16,
@@ -129,7 +129,7 @@ const styles = {
         width: '100%',
         alignSelf: 'center',
         zIndex: 99,
-        paddingTop: 4
+        paddingTop: 8
     },
     progressArr: {
         display: 'flex',
