@@ -75,7 +75,7 @@ export default () => {
         <div style={globalHeader ? styles.containerWithHeader : styles.container}>
             {globalHeader && (<div style={styles.opacity}></div>)}
             {globalHeader && (<GlobalHeader heading={globalHeader.heading} rightActions={globalHeader.rightActions}
-                                            subheading={globalHeader.subheading} leftActions={globalHeader.leftActions}></GlobalHeader>)
+                                            subheading={globalHeader.subheading} leftActions={globalHeader.leftActions} isMobile={globalHeader.isMobile}></GlobalHeader>)
             }
             <div style={globalHeader ? styles.progressArrWithHeader : styles.progressArr}>
                 {stories.map((_, i) =>

@@ -110,6 +110,7 @@ export interface GlobalHeaderProps {
     subheading: string;
     rightActions: JSX.Element;
     leftActions: JSX.Element;
+    isMobile: boolean;
 }
 
 export interface Header {

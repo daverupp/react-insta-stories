@@ -2,7 +2,7 @@ import React from 'react'
 import {GlobalHeaderProps} from "../interfaces";
 import * as url from "url";
 
-const GlobalHeader = ({heading, subheading, rightActions, leftActions}: GlobalHeaderProps) => {
+const GlobalHeader = ({heading, subheading, rightActions, leftActions, isMobile}: GlobalHeaderProps) => {
     const styles = {
         main: {
             display: 'flex',
@@ -26,8 +26,21 @@ const GlobalHeader = ({heading, subheading, rightActions, leftActions}: GlobalHe
             margin: 0,
             marginBottom: 2
         },
+        headingMobile: {
+            fontSize: '22px',
+            fontWeight: 600,
+            color: 'rgba(255, 255, 255, 1)',
+            margin: 0,
+            marginBottom: 2
+        },
         subheading: {
             fontSize: '14px',
+            fontWeight: 300,
+            color: 'rgba(255, 255, 255, 1)',
+            margin: 0
+        },
+        subheadingMobile: {
+            fontSize: '18px',
             fontWeight: 300,
             color: 'rgba(255, 255, 255, 1)',
             margin: 0
@@ -43,8 +56,8 @@ const GlobalHeader = ({heading, subheading, rightActions, leftActions}: GlobalHe
             <div style={styles.actions}>{leftActions}</div>
         )}
         <span style={styles.text}>
-            <p style={styles.heading}>{heading}</p>
-            <p style={styles.subheading}>{subheading}</p>
+            <p style={isMobile ? styles.headingMobile : styles.heading}>{heading}</p>
+            <p style={isMobile ? styles.subheadingMobile : styles.subheading}>{subheading}</p>
         </span>
         {rightActions && (
             <div style={styles.actions}>{rightActions}</div>
