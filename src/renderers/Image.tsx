@@ -54,8 +54,7 @@ const styles = {
     },
     storyContent: {
         width: "100%",
-        // maxWidth: "100%",
-        // maxHeight: "100%",
+        borderRadius: 16,
         margin: "auto"
     }
 };
