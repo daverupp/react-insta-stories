@@ -5,8 +5,6 @@ import ProgressContext from './../context/Progress'
 import Story from './Story'
 import ProgressArray from './ProgressArray'
 import {GlobalCtx, StoriesContext as StoriesContextInterface} from './../interfaces'
-import GlobalHeader from "./GlobalHeader";
-import {call} from "ts-loader";
 
 export default function () {
     const [currentId, setCurrentId] = useState<number>(0)
