@@ -1,11 +1,12 @@
-import React, { useContext, useState, useRef, useEffect } from 'react'
+import React, {useContext, useState, useRef, useEffect} from 'react'
 import GlobalContext from './../context/Global'
 import StoriesContext from './../context/Stories'
 import ProgressContext from './../context/Progress'
 import Story from './Story'
 import ProgressArray from './ProgressArray'
-import { GlobalCtx, StoriesContext as StoriesContextInterface } from './../interfaces'
+import {GlobalCtx, StoriesContext as StoriesContextInterface} from './../interfaces'
 import GlobalHeader from "./GlobalHeader";
+import {call} from "ts-loader";
 
 export default function () {
     const [currentId, setCurrentId] = useState<number>(0)
@@ -16,8 +17,16 @@ export default function () {
     let mousedownId = useRef<any>();
     let isMounted = useRef<boolean>(true);
 
-    const { width, height, loop, currentIndex, isPaused, keyboardNavigation, storyContainerStyles = {} } = useContext<GlobalCtx>(GlobalContext);
-    const { stories } = useContext<StoriesContextInterface>(StoriesContext);
+    const {
+        width,
+        height,
+        loop,
+        currentIndex,
+        isPaused,
+        keyboardNavigation,
+        storyContainerStyles = {}
+    } = useContext<GlobalCtx>(GlobalContext);
+    const {stories} = useContext<StoriesContextInterface>(StoriesContext);
 
     useEffect(() => {
         if (typeof currentIndex === 'number') {
@@ -55,8 +64,7 @@ export default function () {
     const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'ArrowLeft') {
             previous()
-        }
-        else if (e.key === 'ArrowRight') {
+        } else if (e.key === 'ArrowRight') {
             next()
         }
     }
@@ -68,7 +76,7 @@ export default function () {
 
     const setCurrentIdWrapper = (callback) => {
         setCurrentId(callback);
-        toggleState('pause', true);
+        //toggleState('pause', true);
     }
 
     const previous = () => {
@@ -118,7 +126,7 @@ export default function () {
     }
 
     return (
-        <div style={{ ...storyContainerStyles, ...styles.container, ...{ width, height } }}>
+        <div style={{...storyContainerStyles, ...styles.container, ...{width, height}}}>
             <ProgressContext.Provider value={{
                 bufferAction: bufferAction,
                 videoDuration: videoDuration,
@@ -126,7 +134,7 @@ export default function () {
                 pause,
                 next
             }}>
-                <ProgressArray />
+                <ProgressArray/>
             </ProgressContext.Provider>
             <Story
                 action={toggleState}
@@ -136,8 +144,10 @@ export default function () {
                 getVideoDuration={getVideoDuration}
             />
             <div style={styles.overlay}>
-                <div style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onTouchEnd={mouseUp('previous')} onMouseDown={debouncePause} onMouseUp={mouseUp('previous')} />
-                <div style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onTouchEnd={mouseUp('next')} onMouseDown={debouncePause} onMouseUp={mouseUp('next')} />
+                <div style={{width: '50%', zIndex: 999}} onTouchStart={debouncePause} onTouchEnd={mouseUp('previous')}
+                     onMouseDown={debouncePause} onMouseUp={mouseUp('previous')}/>
+                <div style={{width: '50%', zIndex: 999}} onTouchStart={debouncePause} onTouchEnd={mouseUp('next')}
+                     onMouseDown={debouncePause} onMouseUp={mouseUp('next')}/>
             </div>
         </div>
     )
