@@ -74,7 +74,10 @@ export default function () {
 
     const setCurrentIdWrapper = (callback) => {
         setCurrentId(callback);
-        //toggleState('pause', true);
+
+        if (currentId !== stories.length - 1) {
+            toggleState('pause', true);
+        }
     }
 
     const previous = () => {
