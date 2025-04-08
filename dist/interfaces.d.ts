@@ -5,6 +5,7 @@ export interface ReactInstaStoriesProps {
     height?: NumberOrString;
     loader?: JSX.Element;
     header?: Function;
+    globalHeader?: GlobalHeaderProps;
     storyContainerStyles?: Record<string, any>;
     storyStyles?: Object;
     loop?: boolean;
@@ -24,6 +25,7 @@ export interface GlobalCtx {
     width?: NumberOrString;
     height?: NumberOrString;
     loader?: JSX.Element;
+    globalHeader?: GlobalHeaderProps;
     header?: Function;
     storyContainerStyles?: Record<string, any>;
     storyStyles?: Object;
@@ -40,7 +42,7 @@ export interface GlobalCtx {
     onStoryEnd?: Function;
     keyboardNavigation?: boolean;
 }
-declare type NumberOrString = number | string;
+type NumberOrString = number | string;
 export interface StoriesContext {
     stories: Story[];
 }
@@ -50,7 +52,7 @@ export interface ContainerState {
     count: number;
     storiesDone: number;
 }
-export declare type Action = (action: string, bufferAction?: boolean) => void;
+export type Action = (action: string, bufferAction?: boolean) => void;
 export interface Renderer extends React.FC<{
     action: Action;
     isPaused: boolean;
@@ -67,7 +69,7 @@ export interface Renderer extends React.FC<{
     });
 }> {
 }
-export declare type Tester = (story: Story) => {
+export type Tester = (story: Story) => {
     condition: boolean;
     priority: number;
 };
@@ -95,6 +97,13 @@ export interface Story {
     styles?: object;
     content?: Renderer;
     originalContent?: Renderer;
+}
+export interface GlobalHeaderProps {
+    heading: string;
+    subheading: string;
+    rightActions: JSX.Element;
+    leftActions: JSX.Element;
+    isMobile: boolean;
 }
 export interface Header {
     heading: string;

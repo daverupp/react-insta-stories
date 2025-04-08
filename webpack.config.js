@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
     entry: './src/index.tsx',
-    devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
     },
@@ -47,17 +46,20 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, 'dist'),
-        library: 'Stories',
-        libraryTarget: 'umd',
-        umdNamedDefine: true,
-        globalObject: 'this'
+        filename: "index.js",
+        path: path.resolve(__dirname, "dist"),
+        library: {
+            name: "Stories",
+            type: "umd",
+            umdNamedDefine: true,
+        },
+        globalObject: "this",
     },
     optimization: {
         splitChunks: {
             chunks: 'all',
         },
+        minimize: false,
     },
     externals: {
         // Don't bundle react or react-dom

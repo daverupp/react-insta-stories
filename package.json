@@ -1,12 +1,13 @@
 {
 	"name": "@daverupp/react-insta-stories",
-	"version": "2.2.21",
+	"version": "2.3.1",
 	"description": "A React component for Instagram like stories",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "webpack --mode production",
 		"build:dev": "webpack --mode development",
+		"prepare": "npm run build",
 		"prestart": "webpack --mode development",
 		"start": "webpack --watch --mode development",
 		"example": "cd example && npm start",
@@ -14,7 +15,8 @@
 		"predeploy": "cd example && npm install && npm run build",
 		"deploy": "gh-pages -d example/dist",
 		"buildall": "npm install && webpack --mode production && cd example && npm install && npm run build",
-		"prepare": "webpack --mode production"
+		"postversion": "git push && git push --tags",
+		"analyze-bundle": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json --mode=static"
 	},
 	"repository": {
 		"type": "git",
@@ -36,22 +38,29 @@
 		"@babel/preset-env": "^7.5.5",
 		"@babel/preset-react": "^7.0.0",
 		"@teamsupercell/typings-for-css-modules-loader": "^2.0.0",
-		"@types/react": "^16.9.2",
-		"@types/react-dom": "^16.8.5",
+		"@types/react": "^18.0.28",
+		"@types/react-dom": "^18.0.11",
 		"babel-loader": "^8.0.6",
 		"css-loader": "^3.2.0",
 		"gh-pages": "^3.1.0",
-		"react": "^16.10.2",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
 		"react-svg-loader": "^3.0.3",
 		"source-map-loader": "^0.2.4",
 		"style-loader": "^1.0.0",
-		"ts-loader": "^6.0.4",
-		"typescript": "^3.5.3",
-		"webpack": "^4.41.0",
-		"webpack-cli": "^3.3.9",
-		"webpack-dev-server": "^3.8.1"
+		"ts-loader": "^9.4.2",
+		"typescript": "^4.9.5",
+		"webpack": "^5.76.2",
+		"webpack-bundle-analyzer": "^4.8.0",
+		"webpack-cli": "^5.0.1",
+		"webpack-dev-server": "^4.12.0"
 	},
 	"peerDependencies": {
-		"react": "^16.8.2 || ^17.0.2 || ^18.0.0"
+		"react": ">=16.8.2"
+	},
+	"dependencies": {
+		"ejs": "^3.1.10",
+		"ejs-loader": "^0.5.0",
+		"html-webpack-plugin": "^5.6.3"
 	}
 }

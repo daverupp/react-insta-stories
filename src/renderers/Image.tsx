@@ -17,7 +17,7 @@ export const renderer: Renderer = ({ story, action, isPaused, config }) => {
         action('play');
     }
 
-    return <WithHeader story={story} globalHeader={config.header}>
+    return(<WithHeader story={story} globalHeader={config.header}>
         <WithSeeMore story={story} action={action}>
             <div style={{width: '100%'}}>
                 <img style={computedStyles} src={story.url} onLoad={imageLoaded} />
@@ -44,6 +44,7 @@ export const renderer: Renderer = ({ story, action, isPaused, config }) => {
             </div>
         </WithSeeMore>
     </WithHeader>
+    );
 }
 
 const styles = {

@@ -1,48 +1,49 @@
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: "./src/index.js",
+    mode: "production",
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']
+                use: ["babel-loader"],
             },
             {
                 test: /\.css$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: 'css-loader'
-                    }
+                        loader: "css-loader",
+                    },
                 ],
-            }
-        ]
+            },
+        ],
+    },
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+        },
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx']
+        extensions: ["*", ".js", ".jsx"],
     },
     output: {
-        path: __dirname + '/dist',
-        filename: 'bundle.js'
+        path: __dirname + "/dist",
+        filename: "bundle.[name].js",
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: __dirname + '/src/index.ejs'
+            template: path.resolve(__dirname, 'src/index.ejs')
         }),
         new MiniCssExtractPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
     ],
     devServer: {
-        contentBase: './dist',
-        hot: true
+        hot: true,
     },
-    watchOptions: {
-        ignored: [
-            /node_modules([\\]+|\/)+(?!react-insta-stories)/
-        ]
-    }
 };

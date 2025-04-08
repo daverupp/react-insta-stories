@@ -1,3 +1,3 @@
-/// <reference types="react" />
+import React from 'react';
 import { SeeMoreProps } from './../interfaces';
-export default function seeMore(props: SeeMoreProps): JSX.Element;
+export default function seeMore(props: SeeMoreProps): React.JSX.Element;
